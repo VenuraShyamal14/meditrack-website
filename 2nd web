@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Sensor Data</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin-top: 100px;
+      }
+
+      h1{
+        text-align: center;
+        color: #e21313;
+        
+      }
+      h2 {
+        text-align: center;
+      }
+      p {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+      .data-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .data-row {
+        display: flex;
+        justify-content: space-between;
+        width: 400px;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid black;
+      }
+      .data-row span {
+        font-weight: bold;
+      }
+
+      div{
+          margin-bottom: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1> නෝටි ඇබයා productions 👄</h1>
+    <p>nobody nobody does it better 🍆💦</p>
+    <h2>Sensor Data</h2>
+    <div class="data-container">
+      <div class="data-row">
+        <span>Sensor Reading:</span>
+        <span id="sensor-value"><?php echo $sensor_value ?></span>
+      </div>
+    </div>
+
+    <h2>Led control</h2>
+    <div class="data-container">
+      <row>
+        <button id="on-btn" class="btn btn-secondary" onclick="<?php echo $on_click ?>">ON</button>
+        <button id="off-btn" class="btn btn-secondary" onclick="<?php echo $off_click ?>">OFF</button>
+      </row>
+      
+    </div>
+    <?php
+      //get sensor value
+      $sensor_value = null;
+      $url = 'http://192.168.8.144';
+      $data = file_get_contents($url);
+      if ($data !== false) {
+        $json = json_decode($data, true);
+        if (isset($json['sensor_value'])) {
+          $sensor_value = number_format($json['sensor_value'], 1);
+        }
+      }
+
+      //on off buttons
+      $on_click = "http_get('http://192.168.8.144/on');";
+      $off_click = "http_get('http://192.168.8.144/off');";
+
+      function http_get($url) {
+        $context = stream_context_create([
+          'http' => [
+            'method' => 'GET',
+          ],
+        ]);
+        $result = file_get_contents($url, false, $context);
+        return $result;
+      }
+    ?>
+
+     

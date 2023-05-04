@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta charset="UTF-8">
     <title>Sensor Data</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <style>
@@ -12,10 +13,14 @@
       h1{
         text-align: center;
         color: #e21313;
-        margin-bottom: 50px;
+        
       }
       h2 {
         text-align: center;
+      }
+      p {
+        text-align: center;
+        margin-bottom: 50px;
       }
       .data-container {
         display: flex;
@@ -40,7 +45,8 @@
     </style>
   </head>
   <body>
-    <h1> නෝටි ඇබයා productions</h1>
+    <h1> නෝටි ඇබයා productions 👄</h1>
+    <p>nobody nobody does it better 🍆💦</p>
     <h2>Sensor Data</h2>
     <div class="data-container">
       <div class="data-row">
@@ -57,26 +63,34 @@
       </row>
       
     </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-      $(document).ready(function() {
-        setInterval(function() {
-          $.getJSON("http://192.168.8.144/", function(data) {
-            $("#sensor-value").text(data.sensor_value.toFixed(1));
-          });
-        }, 1000); // Check every 1 second
-      });
+ <script>
+      // Initialize Firebase
+      const firebaseConfig = {
+        apiKey: "AIzaSyDhjQiFCvXLotnVMuNR3u5Jiqsw2aKDyKA",
+        authDomain: "notyabaya-iot.firebaseapp.com",
+        databaseURL: "https://notyabaya-iot-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "notyabaya-iot",
+        storageBucket: "notyabaya-iot.appspot.com",
+        messagingSenderId: "1010722218162",
+        appId: "1:1010722218162:web:a3221e7237ad271761e9ab",
+        measurementId: "G-R6HSBRH5FF"
+      };
+      firebase.initializeApp(firebaseConfig);
 
-      //on off buttons
-      $(document).ready(function() {
-        $("#on-btn").click(function() {
-          $.get("http://192.168.8.144/on");
-      });
+      // Get a reference to the database service
+      var database = firebase.database();
 
-      $("#off-btn").click(function() {
-          $.get("http://192.168.8.144/off");
-        });
+      // Retrieve the sensor value from the database
+      var potValueRef = database.ref('test/pot_value');
+      potValueRef.on('value', function(snapshot) {
+        var potValue = snapshot.val();
+        document.getElementById("sensor-value").textContent = potValue;
       });
     </script>
+
   </body>
 </html>
