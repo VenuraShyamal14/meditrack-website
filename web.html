@@ -58,8 +58,8 @@
     <h2>Led control</h2>
     <div class="data-container">
       <row>
-        <button id="on-btn" class="btn btn-secondary">ON</button>
-        <button id="off-btn" class="btn btn-secondary">OFF</button>
+        <button id="on-btn" class="btn btn-secondary" onClick="database.ref('test/led').set(parseInt(1));">ON</button>
+        <button id="off-btn" class="btn btn-secondary" onClick="database.ref('test/led').set(parseInt(0));">OFF</button>
       </row>
       
     </div>
