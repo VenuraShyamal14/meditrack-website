@@ -3,75 +3,62 @@
 <head>
   <meta charset="UTF-8">
   <title>Sensor Data</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
+      background-color: #f8f9fa;
     }
 
     .card-container {
+      margin-top: 50px;
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
     }
 
     .card {
+      background-color: #ffffff;
+      color: #000000;
       width: 400px;
-      padding: 10px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
-    h1 {
-      text-align: center;
-      color: #e21313;
-    }
-
-    h2 {
-      text-align: center;
-    }
-
-    p {
-      text-align: center;
-      margin-bottom: 50px;
+    .card-title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-bottom: 10px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
     }
 
     .data-row {
       display: flex;
-      margin: 10px;
-      padding: 10px;
+      align-items: center;
+      margin-bottom: 5px;
     }
 
     .data-row span {
-      font-weight: bold;
+      margin-right: 5px;
     }
 
-    .qa{
-        margin-right:0;
+    .checkbox-gap {
+      margin: 0 5px;
     }
   </style>
 </head>
 
 <body>
+  <?php include "header.html"; ?>
 
-<nav class="navbar navbar-expand-md bg-dark " data-bs-theme="dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">MediTrack</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Features</a>
-        <a class="nav-link" href="#">Pricing</a>
-        <a class="nav-link qa" href="#">Login</a>
-
-      </div>
-    </div>
-  </div>
-</nav>
   <div class="card-container" id="messages-container"></div>
+
+  <?php include "footer.html"; ?>
 
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
