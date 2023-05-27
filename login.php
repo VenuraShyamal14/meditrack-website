@@ -6,11 +6,12 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin-top: 100px;
+      
       text-align: center;
-      background-color: #0F4C75;
+      background-color: #3a607a;
     }
     h1 {
+        margin-top: 100px;
       color: #F9AA33;
     }
     .form-container {
@@ -41,9 +42,11 @@
       margin-bottom: 10px;
     }
   </style>
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
+    <?php include 'header.html' ; ?>
   <h1>Login</h1>
 
   <div class="form-container">
@@ -58,6 +61,7 @@
     </div>
     <div class="error-message" id="errorMessage"></div>
   </div>
+<?php include 'footer.html' ; ?>
 
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
