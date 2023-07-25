@@ -1,10 +1,35 @@
+<?php
+  // Initialize Firebase app here
+  $firebaseConfig = array(
+    'apiKey' => 'AIzaSyDhjQiFCvXLotnVMuNR3u5Jiqsw2aKDyKA',
+    'authDomain' => 'notyabaya-iot.firebaseapp.com',
+    'databaseURL' => 'https://notyabaya-iot-default-rtdb.asia-southeast1.firebasedatabase.app',
+    'projectId' => 'notyabaya-iot',
+    'storageBucket' => 'notyabaya-iot.appspot.com',
+    'messagingSenderId' => '1010722218162',
+    'appId' => '1:1010722218162:web:a3221e7237ad271761e9ab'
+
+   
+
+  );
+
+  // Convert the PHP array to a JSON string
+  $firebaseConfigJson = json_encode($firebaseConfig);
+?>
 <!DOCTYPE html>
 <html>
 <head>
   <meta charset="UTF-8">
   <title>Login Page</title>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  <script>
+    // Initialize Firebase with the configuration
+    var firebaseConfig = <?php echo $firebaseConfigJson; ?>;
+    firebase.initializeApp(firebaseConfig);
+  </script>
   <style>
-    body {
+     body {
       font-family: Arial, sans-serif;
       
       text-align: center;
@@ -46,7 +71,15 @@
 </head>
 
 <body>
-    <?php include 'header.html' ; ?>
+  <?php include 'header.html' ; ?>
+  <?php
+    session_start();
+    // Check if the user is authenticated
+    if (isset($_SESSION['authenticated']) && $_SESSION['authenticated'] === true) {
+      header('Location: device.php'); // Redirect to the new page
+      exit();
+    }
+  ?>
   <h1>Login</h1>
 
   <div class="form-container">
@@ -61,23 +94,11 @@
     </div>
     <div class="error-message" id="errorMessage"></div>
   </div>
-<?php include 'footer.html' ; ?>
+  <?php include 'footer.html' ; ?>
 
-  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
   <script>
     // Initialize Firebase
-    const firebaseConfig = {
-      apiKey: "AIzaSyDhjQiFCvXLotnVMuNR3u5Jiqsw2aKDyKA",
-      authDomain: "notyabaya-iot.firebaseapp.com",
-      databaseURL: "https://notyabaya-iot-default-rtdb.asia-southeast1.firebasedatabase.app",
-      projectId: "notyabaya-iot",
-      storageBucket: "notyabaya-iot.appspot.com",
-      messagingSenderId: "1010722218162",
-      appId: "1:1010722218162:web:a3221e7237ad271761e9ab",
-      measurementId: "G-R6HSBRH5FF"
-    };
-    firebase.initializeApp(firebaseConfig);
+    // ... (config and other JS code unchanged) ...
 
     // Get a reference to the authentication service
     const auth = firebase.auth();

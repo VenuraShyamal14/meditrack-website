@@ -84,6 +84,80 @@
         </div>
       </div>
     </section>
+
+    
+    
+    <section>
+         <div class="row container text-center">
+            <div class="col">
+               <img src="img/product.jpeg" alt="Feature 1" style="height:300px;">
+            </div>
+            <div class="col">
+               <h2><b>An award-winning smart dispenser</b></h2>
+Hero’s smart dispenser alerts you when it's pill time with a sound and blinking light. One-button press sorts and dispenses your dose.
+
+Holds up to 90-day supply of 10 meds
+Supports any pill size or shape
+Fits all standard kitchen counters
+<br>
+DIMENSIONS
+<br>
+9 in x 9 in x 15 in
+<br>
+(22.9 cm x 22.9 cm x 38.1 cm)
+<br>
+WEIGHT
+10 lbs
+            </div>
+            </div>
+    </section>
+
+
+    <section>
+         <div class="row container text-center">
+            <div class="col">
+               <h2><B> A medication management app</B></h2>
+Add your medication list into the app to receive pill-time reminders, missed-dose alerts, and track what you took and when.
+<br>
+<br>
+Remote caregiver monitoring for safety and medication schedule management
+<br>
+HIPAA-compliant security
+            </div>
+            <div class="col">
+                <img src="img/app.avif" alt="Feature 1" style="height:300px;">
+            </div>
+            </div>
+    </section>
+
+    <section>
+         <h1 style="color:black;"><B>Setup is simple</B></h1>
+         <div class="row container text-center">
+            <div class="col">
+               <div><img src="img/img 5.svg" alt="Feature 1" style="height:150px;"> </div>
+               <h3>1. Pick a countertop</h3>
+               <p>No more messy pill bottles! The smart dispenser is about the size of a coffee maker and fits on any kitchen counter.</p>
+            </div>
+            <div class="col">
+               <div><img src="img/img 6.svg" alt="Feature 1" style="height:150px;"> </div>
+               <h3>2. Connect to Wi-Fi</h3>
+               <p>Setting up Wi-Fi on the smart dispenser connects it with the app so we can dispense your meds according to your schedule.</P>
+            </div>
+        </div>
+
+        <div class="row container text-center">
+            <div class="col">
+               <div><img src="img/img 7.svg" alt="Feature 1" style="height:150px;"> </div>
+               <h3>3. Download the app</h3>
+               <p>Simply add your medication schedule into the app and pour your meds into the easy-to-load containers.</p>
+            </div>
+            <div class="col">
+               <div><img src="img/img 8.svg" alt="Feature 1" style="height:150px;"> </div>
+               <h3>4. Press one button to dispense</h3>
+               <p>Once set up, the dispenser lights up and makes a sound when it’s pill time. One-button press sorts and dispenses your dose.</P>
+            </div>
+        </div>
+    </section>
   </main>
 <?php include "footer.html"; ?>
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
