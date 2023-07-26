@@ -64,6 +64,9 @@
   <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
+    //change login btn to logout btn
+    const loginBtn = document.getElementById("loginBtn");
+    loginBtn.innerHTML="Logout";
     // Initialize Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyDhjQiFCvXLotnVMuNR3u5Jiqsw2aKDyKA",
@@ -119,8 +122,26 @@
         }
       }
     });
+
+    
   </script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 
 </body>
 </html>
+
+
+<script>
+loginBtn.addEventListener("click", function() {
+      if (firebase.auth().currentUser) {
+        // If user is logged in, perform logout
+        firebase.auth().signOut().then(function() {
+          // Update button text
+          loginBtn.innerHTML = "Login";
+          // Perform any other tasks after logout if needed
+          window.location.href = 'login.php';
+        }).catch(function(error) {
+          console.error('Error occurred during logout:', error);
+        });
+
+</script>

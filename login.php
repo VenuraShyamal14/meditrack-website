@@ -89,7 +89,9 @@
     <div class="form-group">
       <input type="password" id="password" placeholder="Password" required>
     </div>
+    
     <div class="form-group">
+      <button id="signinButton">Sign In</button>
       <button id="loginButton">Log In</button>
     </div>
     <div class="error-message" id="errorMessage"></div>
@@ -105,12 +107,31 @@
 
     // Login button click event
     const loginButton = document.getElementById('loginButton');
+    const signinButton = document.getElementById('signinButton');
     loginButton.addEventListener('click', () => {
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;
 
       // Sign in with email and password
       auth.signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          // Login successful, redirect to a new page or perform other actions
+          console.log('Login successful');
+          window.location.href = 'device.php';
+        })
+        .catch((error) => {
+          // Handle login errors
+          const errorMessage = error.message;
+          document.getElementById('errorMessage').innerText = errorMessage;
+        });
+    });
+
+    signinButton.addEventListener('click', () => {
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+
+      // Sign in with email and password
+      auth.createUserWithEmailAndPassword(email, password)
         .then((userCredential) => {
           // Login successful, redirect to a new page or perform other actions
           console.log('Login successful');
